@@ -1,0 +1,433 @@
+/* ============================================================
+   Shot Chart
+   ============================================================ */
+
+.shotchart-app {
+	width: 100%;
+	max-width: 1250px;
+	margin: 0 auto;
+	font-family:
+		Inter,
+		ui-sans-serif,
+		system-ui,
+		-apple-system,
+		BlinkMacSystemFont,
+		"Segoe UI",
+		sans-serif;
+	color: #172033;
+}
+
+.shotchart-controls {
+	display: grid;
+	grid-template-columns: repeat(6, minmax(130px, 1fr));
+	gap: 12px;
+	margin-bottom: 14px;
+}
+
+.shotchart-field {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+}
+
+.shotchart-field label {
+	color: #667085;
+	font-size: 11px;
+	font-weight: 750;
+	letter-spacing: 0.045em;
+	text-transform: uppercase;
+}
+
+.shotchart-field select {
+	width: 100%;
+	height: 40px;
+	padding: 0 12px;
+	border: 1px solid #d8dce5;
+	border-radius: 8px;
+	background: #fff;
+	color: #172033;
+	font-size: 14px;
+}
+
+.shotchart-field select:focus {
+	outline: none;
+	border-color: #6b7280;
+	box-shadow: 0 0 0 3px rgba(107, 114, 128, 0.12);
+}
+
+.shotchart-reset {
+	align-self: end;
+	height: 40px;
+	padding: 0 16px;
+	border: 0;
+	border-radius: 8px;
+	background: #172033;
+	color: white;
+	font-size: 13px;
+	font-weight: 700;
+	cursor: pointer;
+}
+
+.shotchart-reset:hover {
+	background: #2d374b;
+}
+
+/* ------------------------------------------------------------
+   Stats
+   ------------------------------------------------------------ */
+
+.shotchart-stats {
+	margin-bottom: 14px;
+}
+
+.shotchart-stat-group {
+	margin-bottom: 10px;
+}
+
+.shotchart-stat-group:last-child {
+	margin-bottom: 0;
+}
+
+.shotchart-stat-group-title {
+	margin-bottom: 6px;
+	color: #667085;
+	font-size: 11px;
+	font-weight: 800;
+	letter-spacing: 0.055em;
+	text-transform: uppercase;
+}
+
+.shotchart-stat-grid {
+	display: grid;
+	grid-template-columns: repeat(6, minmax(85px, 1fr));
+	gap: 8px;
+}
+
+.shotchart-ft-stats {
+	margin-top: 10px;
+}
+
+.shotchart-ft-stats .shotchart-stat-grid {
+	grid-template-columns: repeat(4, minmax(85px, 1fr));
+}
+
+.shotchart-stat {
+	padding: 10px 12px;
+	border: 1px solid #e5e7eb;
+	border-radius: 8px;
+	background: #f8f9fb;
+}
+
+.shotchart-stat-label {
+	color: #737b8c;
+	font-size: 10px;
+	font-weight: 750;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+}
+
+.shotchart-stat-value {
+	margin-top: 2px;
+	font-size: 19px;
+	font-weight: 800;
+}
+
+/* ------------------------------------------------------------
+   Court
+   ------------------------------------------------------------ */
+
+.shotchart-court-wrap {
+	position: relative;
+	width: 100%;
+	overflow: visible;
+	border: 1px solid #dedbd3;
+	border-radius: 12px;
+	background: #f4f0e8;
+}
+
+#shotchart-court {
+	width: 100%;
+	line-height: 0;
+}
+
+.shotchart-court {
+	display: block;
+	width: 100%;
+	height: auto;
+}
+
+.shot-marker {
+	transform: none !important;
+	transform-origin: initial !important;
+}
+
+.shot-marker:hover {
+	opacity: 1 !important;
+}
+
+/* ------------------------------------------------------------
+   Free Throws
+   ------------------------------------------------------------ */
+
+.shotchart-free-throws {
+	display: grid;
+	grid-template-columns:
+		minmax(0, 1fr)
+		1px
+		minmax(0, 1fr);
+	align-items: center;
+	min-height: 58px;
+	padding: 12px 16px;
+	border-top: 1px solid #dedbd3;
+	background: #eee9df;
+	border-radius: 0 0 12px 12px;
+	overflow: hidden;
+}
+
+.shotchart-free-throw-team {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	min-width: 0;
+	overflow-x: auto;
+	scrollbar-width: none;
+}
+
+.shotchart-free-throw-team::-webkit-scrollbar {
+	display: none;
+}
+
+.shotchart-free-throw-away {
+	justify-content: flex-end;
+	padding-right: 18px;
+}
+
+.shotchart-free-throw-home {
+	justify-content: flex-start;
+	padding-left: 18px;
+}
+
+.shotchart-free-throw-divider {
+	width: 1px;
+	height: 34px;
+	background: #c9c4b9;
+}
+
+.shotchart-free-throw-marker {
+	position: relative;
+	flex: 0 0 20px;
+	width: 20px;
+	height: 20px;
+	padding: 0;
+	border-radius: 50%;
+	cursor: pointer;
+	box-sizing: border-box;
+}
+
+.shotchart-free-throw-marker.made {
+	border: 2px solid #16a34a;
+	background: #16a34a;
+	box-shadow:
+		0 0 0 1px #16a34a,
+		inset 0 0 0 2px white;
+}
+
+.shotchart-free-throw-marker.missed {
+	border: 2px solid #dc2626;
+	background: transparent;
+}
+
+.shotchart-free-throw-marker.missed::before,
+.shotchart-free-throw-marker.missed::after {
+	content: "";
+	position: absolute;
+	left: 8px;
+	top: 2px;
+	width: 1px;
+	height: 12px;
+	background: #dc2626;
+}
+
+.shotchart-free-throw-marker.missed::before {
+	transform: rotate(45deg);
+}
+
+.shotchart-free-throw-marker.missed::after {
+	transform: rotate(-45deg);
+}
+
+.shotchart-free-throw-marker:hover {
+	transform: scale(1.15);
+}
+
+/* ------------------------------------------------------------
+   Tooltip
+   ------------------------------------------------------------ */
+
+.shotchart-tooltip {
+	position: fixed;
+	z-index: 99999;
+	pointer-events: none;
+	display: none;
+	min-width: 190px;
+	padding: 10px 12px;
+	border: 1px solid rgba(255, 255, 255, 0.12);
+	border-radius: 9px;
+	background: rgba(17, 24, 39, 0.96);
+	color: white;
+	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+	font-size: 12px;
+	line-height: 1.4;
+}
+
+.shotchart-tooltip-name {
+	margin-bottom: 3px;
+	font-size: 13px;
+	font-weight: 800;
+}
+
+.shotchart-tooltip-result {
+	font-weight: 750;
+}
+
+.shotchart-tooltip-result.made {
+	color: #4ade80;
+}
+
+.shotchart-tooltip-result.missed {
+	color: #f87171;
+}
+
+.shotchart-tooltip-detail {
+	color: #cbd5e1;
+}
+
+/* ------------------------------------------------------------
+   Legend
+   ------------------------------------------------------------ */
+
+.shotchart-legend {
+	display: flex;
+	justify-content: center;
+	gap: 22px;
+	padding: 12px 0 3px;
+	color: #667085;
+	font-size: 13px;
+}
+
+.shotchart-legend-item {
+	display: inline-flex;
+	align-items: center;
+	gap: 7px;
+}
+
+.shotchart-made-dot {
+	width: 11px;
+	height: 11px;
+	border-radius: 50%;
+	background: #16a34a;
+	box-shadow:
+		0 0 0 1px #16a34a,
+		inset 0 0 0 1px white;
+}
+
+.shotchart-missed-dot {
+	position: relative;
+	width: 11px;
+	height: 11px;
+	border: 2px solid #dc2626;
+	border-radius: 50%;
+}
+
+.shotchart-missed-dot::before,
+.shotchart-missed-dot::after {
+	content: "";
+	position: absolute;
+	left: 3px;
+	top: -1px;
+	width: 1px;
+	height: 9px;
+	background: #dc2626;
+}
+
+.shotchart-missed-dot::before {
+	transform: rotate(45deg);
+}
+
+.shotchart-missed-dot::after {
+	transform: rotate(-45deg);
+}
+
+/* ------------------------------------------------------------
+   Empty / Error
+   ------------------------------------------------------------ */
+
+.shotchart-empty {
+	padding: 35px 15px;
+	color: #667085;
+	text-align: center;
+}
+
+.shotchart-error {
+	padding: 18px;
+	border: 1px solid #fecaca;
+	border-radius: 9px;
+	background: #fef2f2;
+	color: #991b1b;
+}
+
+/* ------------------------------------------------------------
+   Responsive
+   ------------------------------------------------------------ */
+
+@media (max-width: 1100px) {
+	.shotchart-controls {
+		grid-template-columns: repeat(3, minmax(150px, 1fr));
+	}
+}
+
+@media (max-width: 800px) {
+	.shotchart-controls {
+		grid-template-columns: 1fr 1fr;
+	}
+
+	.shotchart-reset {
+		width: 100%;
+	}
+
+	.shotchart-stat-grid {
+		grid-template-columns: repeat(3, 1fr);
+	}
+
+	.shotchart-ft-stats .shotchart-stat-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (max-width: 520px) {
+	.shotchart-controls {
+		grid-template-columns: 1fr;
+	}
+
+	.shotchart-stat-grid,
+	.shotchart-ft-stats .shotchart-stat-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	.shotchart-tooltip {
+		min-width: 165px;
+	}
+
+	.shotchart-free-throws {
+		padding-left: 8px;
+		padding-right: 8px;
+	}
+
+	.shotchart-free-throw-away {
+		padding-right: 10px;
+	}
+
+	.shotchart-free-throw-home {
+		padding-left: 10px;
+	}
+}
